@@ -6,8 +6,9 @@ cache:
   - node_modules
   - public/assets
   - public/packs-test
+  - tmp/cache/babel-loader
 dist: trusty
-sudo: false
+sudo: required
 
 notifications:
   email: false
@@ -32,6 +33,7 @@ addons:
     - g++-6
     - libprotobuf-dev
     - protobuf-compiler
+    - libicu-dev
 
 rvm:
   - 2.3.4

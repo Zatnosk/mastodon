@@ -16,7 +16,8 @@ const messages = defineMessages({
   unmute: { id: 'account.unmute', defaultMessage: 'Unmute @{name}' },
 });
 
-class Account extends ImmutablePureComponent {
+@injectIntl
+export default class Account extends ImmutablePureComponent {
 
   static propTypes = {
     account: ImmutablePropTypes.map.isRequired,
@@ -69,7 +70,7 @@ class Account extends ImmutablePureComponent {
       <div className='account'>
         <div className='account__wrapper'>
           <Permalink key={account.get('id')} className='account__display-name' href={account.get('url')} to={`/accounts/${account.get('id')}`}>
-            <div className='account__avatar-wrapper'><Avatar src={account.get('avatar')} staticSrc={account.get('avatar_static')} size={36} /></div>
+            <div className='account__avatar-wrapper'><Avatar account={account} size={36} /></div>
             <DisplayName account={account} />
           </Permalink>
 
@@ -82,5 +83,3 @@ class Account extends ImmutablePureComponent {
   }
 
 }
-
-export default injectIntl(Account);
